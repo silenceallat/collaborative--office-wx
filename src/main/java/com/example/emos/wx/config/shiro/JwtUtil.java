@@ -11,7 +11,6 @@ import com.example.emos.wx.exception.EmosException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
 import java.util.Date;
 
 /**
@@ -24,10 +23,10 @@ import java.util.Date;
 @Slf4j
 public class JwtUtil {
     // 配置注解，读取yml文件中的参数
-    @Value("{emos.jwt.secret}")
+    @Value("${emos.jwt.secret}")
     private String secret;
 
-    @Value("{emos.jwt.expire}")
+    @Value("${emos.jwt.expire}")
     private int expire;
 
     public String createToken(int userId){
