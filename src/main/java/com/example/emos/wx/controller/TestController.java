@@ -15,6 +15,6 @@ public class TestController {
     @PostMapping("/sayhello")
     @ApiOperation(value = "简单的测试方法")
     public R sayHello(@Valid @RequestBody TestSayHelloForm form){
-        return R.ok().put("message","hello swagger"+form.getName());
+        return R.ok().put("message",form.getName());
     }
 }
