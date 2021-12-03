@@ -34,26 +34,26 @@ public class OAuth2Fitler extends AuthenticatingFilter {
     private RedisTemplate redisTemplate;
 
     /*
-     * 拦截请求后，用于把令牌字符串封装成令牌对象
-     * */
+    * 拦截请求后，用于把令牌字符串封装成令牌对象
+    * */
     @Override
     protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) throws Exception {
         String token = getRequesToken((HttpServletRequest) request);
-        if (StringUtils.isBlank(token)) {
+        if (StringUtils.isBlank(token)){
             return null;
         }
         return new OAuth2Token(token);
     }
 
     /*
-     * 拦截请求，判断请求是否需要被Shiro处理
-     * */
+    * 拦截请求，判断请求是否需要被Shiro处理
+    * */
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
         HttpServletRequest req = (HttpServletRequest) request;
         // Ajax提交application/json数据的时候，会先发出Options请求
-        // 这里要放行Options请求，不需要Shiro处理
-        if (req.getMethod().equals(RequestMethod.OPTIONS.name())) {
+       // 这里要放行Options请求，不需要Shiro处理
+        if (req.getMethod().equals(RequestMethod.OPTIONS.name())){
             return true;
         }
         // 除了Options请求之外，所有请求都要被Shiro处理
@@ -65,11 +65,11 @@ public class OAuth2Fitler extends AuthenticatingFilter {
         return false;
     }
 
-    private String getRequesToken(HttpServletRequest httpRequest) {
-        //    从header 中获取token
+    private String getRequesToken(HttpServletRequest httpRequest){
+    //    从header 中获取token
         String token = httpRequest.getHeader("token");
         //如果header中不存在token，则从参数中获取token
-        if (StringUtils.isBlank(token)) {
+        if(StringUtils.isBlank(token)){
             token = httpRequest.getParameter("token");
         }
         return token;
