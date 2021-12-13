@@ -57,7 +57,7 @@ mybatis:
 logging:
   level:
     root: info
-    com.example.emos.wx.db.dao : warn
+    com.example.emos.wx.db.dao: warn
   pattern:
     console: "%d{HH:mm:ss} %-5level %msg%n"
 
@@ -69,3 +69,7 @@ emos:
     expire: 5
     # 令牌缓存时间（天)
     cache-expire: 10
+
+wx:
+  app-id: 
+  app-secret: 
